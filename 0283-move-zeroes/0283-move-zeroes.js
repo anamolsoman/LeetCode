@@ -4,17 +4,20 @@
  */
 var moveZeroes = function(nums) {
     let left = 0
-    let lastNonZeroFound = 0
-    while(left < nums.length){
-        if(nums[left] != 0){
-            let temp 
-            temp = nums[left]
-            nums[left] = nums[lastNonZeroFound]
-            nums[lastNonZeroFound] = temp
-            lastNonZeroFound++
-        }
-            left++
-        
+    let right = 0
+
+    function swap(i, j) {
+        const temp = nums[i]
+        nums[i] = nums[j]
+        nums[j] = temp
     }
-    return nums
+
+    while (right < nums.length) {
+        if (nums[right] !== 0) {
+            swap(left, right)
+            left++
+        }
+
+        right++
+    }
 };
