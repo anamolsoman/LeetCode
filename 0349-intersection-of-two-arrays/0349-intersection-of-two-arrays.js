@@ -5,13 +5,8 @@
  */
 
 var intersection = function(nums1, nums2) {
-       const n1 = new Set(nums1)
-    const n2 = new Set(nums2)
-    const res = []
-
-    for (const num of n1) {
-        if (n2.has(num)) res.push(num)
-    }
-
-    return res
+     if (nums1.length > nums2.length) return intersection(nums2, nums1)
+	let set = new Set(nums1), ans = new Set()
+	for (let num of nums2) if (set.has(num)) ans.add(num);
+	return [...ans]
 };
